@@ -11,17 +11,18 @@ class Computer
     def attempt_to_crack_code players_guess #array
         @code_break_attempt.clear
         players_guess.each_with_index do |number , index|
-            if @computer_code.include? number
+            case @computer_code.include? number
+            when true 
                 @code_break_attempt << number.to_s.colorize(:red) if index == @computer_code.index(number)
                 @code_break_attempt <<  number.to_s.colorize(:green) if index != @computer_code.index(number)
-            else
-                @code_break_attempt << number.to_s.colorize(:light_cyan)
+            when false 
+                @code_break_attempt << number.to_s.colorize(:light_cyan)    
             end
         end
         puts @code_break_attempt.join()
     end 
 
-    def cracked? players_guess
+    def code_cracked? players_guess
         players_guess == @computer_code
     end
 
