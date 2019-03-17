@@ -4,7 +4,7 @@ require './game_display.rb'
 include GameDisplay
 
 def is_game_over
-    if $computer.cracked? $player.guess
+    if $computer.code_cracked? $player.guess
         puts "you won!"
         play_again
     else
@@ -33,7 +33,7 @@ def play_game
         puts "\nAttempt number #{i}"
         $player.make_guess
         $computer.attempt_to_crack_code $player.guess
-        break if $computer.cracked? $player.guess
+        break if $computer.code_cracked? $player.guess
     end
 end
 
