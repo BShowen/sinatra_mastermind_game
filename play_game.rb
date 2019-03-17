@@ -7,7 +7,7 @@ GameDisplay::intro
 computer = Computer.new
 player = Player.new 
 for i in 1..6 do 
-    puts "Attempt number #{i}"
+    puts "\nAttempt number #{i}"
     player.make_guess
     computer.attempt_to_crack_code player.guess
     break if computer.cracked? player.guess
