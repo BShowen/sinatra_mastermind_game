@@ -6,8 +6,22 @@ include GameDisplay
 def is_game_over
     if $computer.cracked? $player.guess
         puts "you won!"
+        play_again
     else
         puts "you lost!"
+        play_again
+    end
+end
+
+def play_again
+    puts "Would you like to play again? (y/n)"
+    reply = gets.chomp.upcase
+    case reply
+    when "Y"
+        play_game
+        is_game_over
+    when "N"
+        exit
     end
 end
 
