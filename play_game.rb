@@ -3,18 +3,25 @@ require './computer.rb'
 require './game_display.rb'
 include GameDisplay
 
-GameDisplay::intro
-computer = Computer.new
-player = Player.new 
-for i in 1..6 do 
-    puts "\nAttempt number #{i}"
-    player.make_guess
-    computer.attempt_to_crack_code player.guess
-    break if computer.cracked? player.guess
+def is_game_over
+    if $computer.cracked? $player.guess
+        puts "you won!"
+    else
+        puts "you lost!"
+    end
 end
 
-if computer.cracked? player.guess
-    puts "you won!"
-else
-    puts "you lost!"
+def play_game
+    GameDisplay::intro
+    $computer = Computer.new
+    $player = Player.new 
+    for i in 1..6 do 
+        puts "\nAttempt number #{i}"
+        $player.make_guess
+        $computer.attempt_to_crack_code $player.guess
+        break if $computer.cracked? $player.guess
+    end
 end
+
+play_game
+is_game_over
