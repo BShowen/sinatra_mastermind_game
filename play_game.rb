@@ -1,4 +1,4 @@
-require './player.rb'
+require './code_breaker.rb'
 require './computer.rb'
 require './game_display.rb'
 include GameDisplay
@@ -28,7 +28,7 @@ end
 def play_game
     GameDisplay::intro
     $computer = Computer.new
-    $player = Player.new 
+    $player = CodeBreaker.new 
     for i in 1..6 do 
         puts "\nAttempt number #{i}"
         $player.make_guess
