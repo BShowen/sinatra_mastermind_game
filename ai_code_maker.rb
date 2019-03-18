@@ -1,14 +1,14 @@
 require 'colorize'
 
-class AiCodeMaker
-    attr_accessor :code
+class AiCodeMaker 
+    # attr_accessor :computer_code
     def initialize 
         @computer_code = []
         @code_break_attempt = []
         generate_random_code
     end
 
-    def attempt_to_crack_code players_guess #array
+    def crack_code players_guess#array
         @code_break_attempt.clear
         players_guess.each_with_index do |number , index|
             case @computer_code.include? number

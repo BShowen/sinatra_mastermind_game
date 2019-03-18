@@ -1,5 +1,5 @@
-require './code_breaker.rb'
-require './computer.rb'
+require './human_code_breaker.rb'
+require './ai_code_maker.rb'
 require './game_display.rb'
 include GameDisplay
 
@@ -28,11 +28,11 @@ end
 def play_game
     GameDisplay::intro
     $computer = AiCodeMaker.new
-    $player = CodeBreaker.new 
+    $player = HumanCodeBreaker.new 
     for i in 1..6 do 
         puts "\nAttempt number #{i}"
         $player.make_guess
-        $computer.attempt_to_crack_code $player.guess
+        $computer.crack_code $player.guess
         break if $computer.code_cracked? $player.guess
     end
 end

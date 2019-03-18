@@ -1,4 +1,4 @@
-class CodeBreaker
+class HumanCodeBreaker
     
     attr_reader :guess 
     
@@ -9,7 +9,7 @@ class CodeBreaker
     def make_guess
         puts "What is your guess?"
         @guess.clear
-        @guess = gets.chomp.split('').map! { |i| i.to_i }
+        @guess = gets.chomp.split('').map! { |str| str.to_i }
     end
 
 end
