@@ -1,4 +1,4 @@
-class Player
+class CodeBreaker
     
     attr_reader :guess 
     
