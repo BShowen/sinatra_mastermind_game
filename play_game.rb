@@ -27,7 +27,7 @@ end
 
 def play_game
     GameDisplay::intro
-    $computer = Computer.new
+    $computer = AiCodeMaker.new
     $player = CodeBreaker.new 
     for i in 1..6 do 
         puts "\nAttempt number #{i}"

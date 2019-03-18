@@ -1,6 +1,6 @@
 require 'colorize'
 
-class Computer
+class AiCodeMaker
     attr_accessor :code
     def initialize 
         @computer_code = []
