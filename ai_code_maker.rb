@@ -5,7 +5,7 @@ class AiCodeMaker
     def initialize 
         @computer_code = []
         @code_break_attempt = []
-        generate_random_code
+        set_code
     end
 
     def crack_code players_guess#array
@@ -27,7 +27,7 @@ class AiCodeMaker
     end
 
     private
-    def generate_random_code
+    def set_code
         until @computer_code.length == 4
             random_number = rand(9)+1
             @computer_code << random_number unless @computer_code.include? random_number
