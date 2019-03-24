@@ -1,4 +1,5 @@
 class HumanCodeMaker 
+    
     attr_reader :code
 
     def initialize
@@ -7,7 +8,7 @@ class HumanCodeMaker
         set_code
     end
 
-    def let_ai_attempt ai_guess
+    def let_ai_guess ai_guess
         @results = []
         ai_guess.each_with_index do |number, index| 
             case @code[index] == number 
