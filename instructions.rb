@@ -1,7 +1,7 @@
 require 'colorize'
 
-module GameLogic
-    def GameLogic.intro
+module Instructions
+    def Instructions.intro
         puts `clear`
         puts "Welcome to Mastermind!".center(100) 
         puts "\n\t 1) The object of the game is to guess a 4 digit secret code that the computer has generated."
@@ -10,7 +10,7 @@ module GameLogic
         sleep 1
         puts "\n\t 3) The computer will provide feedback to you after each guess."
         sleep 1
-        puts "\n\t 4)The code will only contain numbers 0-9 and never any duplicate numbers."
+        puts "\n\t 4) The code will only contain numbers 0-9 and never any duplicate numbers."
 
         puts "\n\t#{"HINTS".colorize(:light_magenta)}:"
         sleep 0.5

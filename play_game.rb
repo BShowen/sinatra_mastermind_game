@@ -1,12 +1,12 @@
 require "./code_guessers.rb"
 require "./code_setters.rb"
-require "./game_logic.rb"
+require "./instructions.rb"
 
-GameLogic::intro 
+Instructions::intro 
 
 def play_game_against who
     case who
-    when 'ai'  # human guesses AI code.
+    when 'ai'  # Human guesses AI code.
         $ai = CodeSetters::AiCodeSetter.new 
         $human = CodeGuessers::HumanCodeGuesser.new 
         puts "\nAwesome, Lets play!"
@@ -24,7 +24,7 @@ def play_game_against who
             end
         end
         play_again
-    when 'human' # Ai guesses human code.
+    when 'human' # Ai guesses Human code.
         $human = CodeSetters::HumanCodeSetter.new
         $ai = CodeGuessers::AiCodeGuesser.new
         for i in 0..6 
