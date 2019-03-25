@@ -9,7 +9,7 @@
 ## To play the game please follow the instructions below. 
 ### I have not yet learned how to bundle gems. You will need the [colorize](https://github.com/fazibear/colorize) gem installed on your machine before you try to run this. 
 
-## Instructions for installing the "Colorize" gem. 
+## Instructions for installing the Colorize gem. 
 1. Open your command-line 
 2. Type $`gem install colorize`
 3. Now proceed to follow the instructions below. 
