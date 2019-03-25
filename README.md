@@ -6,11 +6,16 @@
 
 ![alt text](https://github.com/BShowen/CL_mastermind/blob/master/screenshots/Intro.png "Introduction image")
 
-# If you would like to play then please follow the instructions below. 
+## To play the game please follow the instructions below. 
 ### I have not yet learned how to bundle gems. You will need the [colorize](https://github.com/fazibear/colorize) gem installed on your machine before you try to run this. 
 
-1. First, make sure you have the colorize gem installed. Please see the link above if you dont have it installed. 
+## Instructions for installing the "Colorize" gem. 
+1. Open your command-line 
+2. Type $`gem install colorize`
+3. Now proceed to follow the instructions below. 
+
+## Instructions for playing the game. 
+1. First, make sure you have the colorize gem installed.
 2. Clone or download a copy of this repo onto your machine. 
-3. Open a command line and cd into the directory where you have downloaded these files.
-4. Run the "play_game.rb" file by typing $`ruby play_game.rb` 
-5. Enjoy!
+3. Open your command-line and cd into the directory where you have downloaded these files.
+4. Play the game by typing $`ruby play_game.rb` 
