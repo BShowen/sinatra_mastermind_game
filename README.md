@@ -11,6 +11,6 @@
 
 1. First, make sure you have the colorize gem installed. Please see the link above if you dont have it installed. 
 2. Clone or download a copy of this repo onto your machine. 
-3. Open a command line and cd into the directory where you have downloaded this code. 
-4. Run the 'play_game.rb' file by typing $ ruby play_game.rb 
+3. Open a command line and cd into the directory where you have downloaded these files.
+4. Run the "play_game.rb" file by typing $`ruby play_game.rb` 
 5. Enjoy!
