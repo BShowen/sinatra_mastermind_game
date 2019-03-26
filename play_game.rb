@@ -60,7 +60,7 @@ end
 
 def get_game_parameters_from_user
     puts "\nDo you want to guess the code or create the code?"
-    puts "\nPress 1 to guess the code.\nPress 2 to create the code."
+    puts "\nPress 1 to guess the code that the Ai generates.\nPress 2 to create the code for Ai to try and guess."
     begin
         reply = gets.chomp[0].match(/[1-2]/)[0]
     rescue
