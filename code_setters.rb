@@ -1,4 +1,5 @@
 require "colorize"
+require "./custom_enumerable.rb"
 module CodeSetters
 
     class HumanCodeSetter
@@ -47,9 +48,17 @@ module CodeSetters
         private
         def set_code
             puts "What is your secret code?"
-            @code = gets.chomp[0..3].split('').map! {|str| str.to_i }
+            begin
+                @code = gets.chomp[0..3].split('').map! {|str| str.to_i } 
+                raise if @code.has_doubles?
+            rescue
+                puts "You cant have duplicate numbers in your code.\nTry again."
+                retry
+            end
         end
     end
+
+    
 
     class AiCodeSetter
         # attr_accessor :computer_code
