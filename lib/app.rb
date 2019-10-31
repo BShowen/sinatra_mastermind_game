@@ -19,14 +19,10 @@ class MasterMindApp < Sinatra::Base
 
     get "/play" do 
         session[:ai] ||= AiSetter.new
+        session[:limit] ||= 0
         session[:results] ||= false
         if session[:results]
-            session[:limit] ||= 0
             session[:limit] += 1
-            if session[:limit] >= 6
-                session.clear 
-                redirect '/'
-            end
             results = session[:results]
             erb :play_game, locals: {results: results}
         else
@@ -47,4 +43,8 @@ class MasterMindApp < Sinatra::Base
     get '/against_ai' do 
         "AI playing against you"
     end
+
+    get "/loser" do 
+        erb :you_lost
+    end 
 end

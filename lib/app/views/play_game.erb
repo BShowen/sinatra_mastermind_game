@@ -6,15 +6,21 @@
 </form>
 
 <% if results %>
+
     <% results[:visual].each_with_index do |color, index| %>
-        <font color='<%= color %>'>
-            <%= results[:previous_guess][index].to_s %>
-        </font>
+            <font color='<%= color %>'>
+                <%= results[:previous_guess][index].to_s %>
+            </font>
     <% end %>
-        <% if results[:winner] %>
-        <form action="/" method="GET">
-            <input type="submit" value="Play again">
-        </form>
+
+    <% if session[:limit] >= 6 %>
+            <% session.clear %>
+            <% redirect '/loser' %>
     <% end %>
+
+    <% if results[:winner] %>
+        erb :play_again
+    <% end %>
+
 <% end %>
 
