@@ -1,6 +1,6 @@
-require "./code_guessers.rb"
-require "./code_setters.rb"
-require "./instructions.rb"
+# require "./code_guessers.rb"
+# require "./code_setters.rb"
+# require "./instructions.rb"
 
 Instructions::intro 
 
