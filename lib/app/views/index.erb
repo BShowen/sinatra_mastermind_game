@@ -1,0 +1,33 @@
+<h1>
+        <%= hash[:title] %>
+</h1>
+    
+<% hash[:instructions].each do |sentence| %>
+    <p><%= sentence %></p>
+<% end %>
+
+<% hash[:hints].each do |hint| %>
+    <p><%= hint %></p>
+<% end %>
+
+<p><%= hash[:example][0] %></p>
+<p>
+    <%= hash[:example][1] %>
+    <font color='red'>
+        <%= hash[:example][2] %>
+    </font>
+    <font color='green'>
+        <%= hash[:example][3] %>
+    </font>
+    <font color='red'>
+        <%= hash[:example][4] %>
+    </font>
+    <font color='blue'>
+        <%= hash[:example][5] %>
+    </font>
+</p>
+
+<form>
+     <input type='submit' formaction='play/ai' value='Code Guesser'>
+    <input type='submit' formaction='play/human' value='Code Setter'>
+</form

@@ -6,45 +6,36 @@ class MasterMindApp < Sinatra::Base
     configure :development do 
         register Sinatra::Reloader
     end
+
     get '/' do 
         session.clear
-        local_vars = {  
+        $game = nil
+        locals = {  
             title: Instructions.title, 
             instructions: Instructions.instructions.split(".").map!(&:strip),
             hints: Instructions.hints.split(".").map!(&:strip),
             example: Instructions.example.split(".").map!(&:strip)
         }
-        erb :instructions, locals: {vars: local_vars}
+        erb :index, locals: {hash: locals}
     end
 
-    get "/play" do 
-        session[:ai] ||= AiSetter.new
-        session[:limit] ||= 0
-        session[:results] ||= false
-        if session[:results]
-            session[:limit] += 1
-            results = session[:results]
-            erb :play_game, locals: {results: results}
-        else
-            erb :play_game, locals: {results: false}   
-        end
+    get '/play/:setter' do |setter|
+        $game ||= PlayGame.new(setter)
+        erb :play_game, locals: {code_setter: setter, feedback: false}
     end
 
-    post "/check" do
-        human_guess = params[:guess].split('').map(&:to_i)
-        session[:results] = {
-            visual: session[:ai].check_guess(human_guess),
-            winner: session[:ai].code_cracked?, 
-            previous_guess: human_guess
-        }
-        redirect "/play"
+    post '/set_code' do 
+        $game.set_human_code(params[:code])
+        redirect 'ai/guess'
     end
 
-    get '/against_ai' do 
-        "AI playing against you"
+    get '/ai/guess' do
+        erb :computer_guess, locals: {game: $game}
     end
 
-    get "/loser" do 
-        erb :you_lost
+    post '/guess_code' do 
+        $game.set_human_code(params[:code])
+        feedback = $game.attempt_guess
+        erb :play_game, locals: {code_setter: "ai", feedback: feedback}
     end 
 end

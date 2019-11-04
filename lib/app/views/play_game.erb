@@ -1,26 +1,30 @@
-<h3>You are playing against the computer</h3>
+<h3>Play Game</h3>
 
-<form action="/check" method="POST">
-    <input type="text" name="guess" placeholder="Type a four number guess" autofocus>
-    <input type="submit" value="Guess">
-</form>
+<% if code_setter == "human" %>
+    <p>Type a 4 letter code for the computer to try and guess</p>
+    <form action="/set_code" method="POST">
+        <input type="text" name="code" placeholder="What's your code?" autofocus>
+        <input type="submit" value="Go">
+    </form>
+<% else %>
+    <form action="/guess_code" method="POST">
+        <input type="text" name="code" placeholder="What's your guess?" autofocus>
+        <input type="submit" value="Go">
+    </form>
 
-<% if results %>
+    <% if feedback %>
+        <p>Feedback</p>
 
-    <% results[:visual].each_with_index do |color, index| %>
-            <font color='<%= color %>'>
-                <%= results[:previous_guess][index].to_s %>
-            </font>
-    <% end %>
+        <% feedback[:colors].each_with_index do |color, index| %>
+                <font color='<%= color.to_s %>'>
+                    <%= feedback[:guess][index].to_s %>
+                </font>
+        <% end %>
 
-    <% if session[:limit] >= 6 %>
-            <% session.clear %>
-            <% redirect '/loser' %>
-    <% end %>
+        <% if feedback[:game_over] %>
+            <%= erb :play_again %>
+        <% end %>
 
-    <% if results[:winner] %>
-        <%= erb :play_again %>
     <% end %>
 
 <% end %>
-

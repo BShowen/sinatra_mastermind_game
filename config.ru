@@ -4,4 +4,6 @@ Bundler.require
 
 require "app.rb"
 
+use Rack::MethodOverride
+
 run MasterMindApp

@@ -1,0 +1,14 @@
+<p>Computers guess</p>
+<% guess_results = $game.attempt_guess %>
+<p><%= guess_results[:ai_guess].map!(&:to_s).join(' ') %></p>
+
+<% if guess_results[:game_over] %>
+    <p>Yor code was guessed!</p>
+    <form action='/'>
+        <input type='submit' value='Home'>
+    </form>
+<% else %>
+    <form action="/ai/guess" method="GET">
+        <input type="submit" value="Next Guess" autofocus>
+    </form>
+<% end %>

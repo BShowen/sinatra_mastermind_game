@@ -3,7 +3,7 @@ class Array
         new_array = []
         boolean = false
         self.each do |item|
-            if new_array.include? item
+            if new_array.include?(item)
                 boolean = !boolean
                 break
             end
