@@ -1,10 +1,10 @@
-require './master_box.rb'
+# require './master_box.rb'
 
 class ApplicationController < Sinatra::Base
     configure do 
         set :root, 'lib/app'
         set :views, 'lib/app/views'
-        set :public_dir, '/public'
+        set :public_dir, 'lib/app/public'
         enable :sessions
     end
 
