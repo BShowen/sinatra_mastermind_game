@@ -1,8 +1,13 @@
 require './master_box.rb'
 
-class MasterMindApp < Sinatra::Base
-    set :root, 'lib/app'
-    enable :sessions
+class ApplicationController < Sinatra::Base
+    configure do 
+        set :root, 'lib/app'
+        set :views, 'lib/app/views'
+        set :public_dir, '/public'
+        enable :sessions
+    end
+
     configure :development do 
         register Sinatra::Reloader
     end
