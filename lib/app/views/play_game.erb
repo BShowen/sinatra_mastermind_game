@@ -1,30 +1,42 @@
-<h3>Play Game</h3>
+<div class='main_container'>
+    <% if code_setter == "human" %>
+        <p>What's your code?</p>
+        <div class='form_container'>
+            <form action="/set_code" method="POST">
+                <input type="text" name="code" placeholder="****" autofocus>
+                <input class='button' type="submit" value="Go">
+            </form>
+        </div>
+    <% else %>
+        <% if feedback[:game_over] == false %>
+            <p>What's your guess?</p>
+            <div class='form_container'>
+                <form action="/guess_code" method="POST">
+                    <input type="text" name="code" placeholder="****" autofocus>
+                    <input class='button' type="submit" value="Go">
+                </form>
+            </div>
+            <% if feedback[:colors] && feedback[:game_over] == false %>
+                <div class="feedback_container">
+                    <div class='feeback_text'>
+                        <p>Feedback</p>
+                    </div>
 
-<% if code_setter == "human" %>
-    <p>Type a 4 letter code for the computer to try and guess</p>
-    <form action="/set_code" method="POST">
-        <input type="text" name="code" placeholder="What's your code?" autofocus>
-        <input type="submit" value="Go">
-    </form>
-<% else %>
-    <form action="/guess_code" method="POST">
-        <input type="text" name="code" placeholder="What's your guess?" autofocus>
-        <input type="submit" value="Go">
-    </form>
-
-    <% if feedback %>
-        <p>Feedback</p>
-
-        <% feedback[:colors].each_with_index do |color, index| %>
-                <font color='<%= color.to_s %>'>
-                    <%= feedback[:guess][index].to_s %>
-                </font>
+                    <div class="feedback_numbers">
+                        <% feedback[:colors].each_with_index do |color, index| %>
+                            <span class='<%= color.to_s %>'>
+                                <%= feedback[:guess][index].to_s %>
+                            </span>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
         <% end %>
-
+        
         <% if feedback[:game_over] %>
-            <%= erb :play_again %>
+                <% if feedback[:game_over] %>
+                    <%= erb :play_again %>
+                <% end %>
         <% end %>
-
     <% end %>
-
-<% end %>
+</div>

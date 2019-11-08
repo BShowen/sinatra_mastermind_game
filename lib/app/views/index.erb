@@ -1,33 +1,43 @@
-<h1>
-        <%= hash[:title] %>
-</h1>
+<div class="top_container">
+    <div class="mastermind">
+        <h1>
+            <%= hash[:title] %>
+        </h1>
+    </div>
+</div>
     
-<% hash[:instructions].each do |sentence| %>
-    <p><%= sentence %></p>
-<% end %>
+<div class="bottom_container">
+    <div class="menu_board">
+        <div class="instructions">
+            <p><%= hash[:instructions] %></p>
+        </div>
 
-<% hash[:hints].each do |hint| %>
-    <p><%= hint %></p>
-<% end %>
+        <div class='examples'>
+            <p><%= hash[:hints] %></p>
 
-<p><%= hash[:example][0] %></p>
-<p>
-    <%= hash[:example][1] %>
-    <font color='red'>
-        <%= hash[:example][2] %>
-    </font>
-    <font color='green'>
-        <%= hash[:example][3] %>
-    </font>
-    <font color='red'>
-        <%= hash[:example][4] %>
-    </font>
-    <font color='blue'>
-        <%= hash[:example][5] %>
-    </font>
-</p>
+            <p><%= hash[:example][0] %></p>
+            <p>
+                <%= hash[:example][1] %>
+                <font color='red'>
+                    <%= hash[:example][2] %>
+                </font>
+                <font color='green'>
+                    <%= hash[:example][3] %>
+                </font>
+                <font color='red'>
+                    <%= hash[:example][4] %>
+                </font>
+                <font color='blue'>
+                    <%= hash[:example][5] %>
+                </font>
+            </p>
+        </div>
 
-<form>
-     <input type='submit' formaction='play/ai' value='Code Guesser'>
-    <input type='submit' formaction='play/human' value='Code Setter'>
-</form
+        <div class='buttons_container'>
+            <form>
+                <input class='button' type='submit' formaction='play/ai' value='Code Guesser'>
+                <input class='button' type='submit' formaction='play/human' value='Code Setter'>
+            </form>
+        </div>
+    </div>
+</div>

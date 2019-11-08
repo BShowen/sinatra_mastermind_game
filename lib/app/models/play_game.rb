@@ -30,6 +30,10 @@ class PlayGame
     end
 
     private 
+    def game_over?
+        @human.code == @ai.code
+    end 
+
     #code for human vs computer
     def human_guess_computer_code
         feedback = @ai.check_this_guess(@human.code)
@@ -40,20 +44,15 @@ class PlayGame
         }
     end
 
-
-
     #code for computer vs human
     def computer_guess_human_code
         feedback = @human.check_this_guess(@ai.code)
         hash = {
-            ai_guess: @ai.code,
+            colors: feedback,
+            guess: @ai.code,
             game_over: game_over?
         }
         @ai.new_guess(feedback)
         hash
     end
-
-    def game_over?
-        @human.code == @ai.code
-    end 
 end

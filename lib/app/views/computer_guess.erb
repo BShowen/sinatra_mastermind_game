@@ -1,14 +1,27 @@
 <p>Computers guess</p>
-<% guess_results = $game.attempt_guess %>
-<p><%= guess_results[:ai_guess].map!(&:to_s).join(' ') %></p>
+<div class="feedback_container">
+    <div class="feedback_numbers" >
+        <% guess_results = $game.attempt_guess %>
+        <% guess_results[:colors].each_with_index do |color, index| %>
+            <span class='<%= color.to_s %>'>
+                <%= guess_results[:guess][index].to_s %>
+            </span>
+        <% end %> 
+    </div>
+</div>
+
 
 <% if guess_results[:game_over] %>
     <p>Yor code was guessed!</p>
-    <form action='/'>
-        <input type='submit' value='Home'>
-    </form>
+    <div class="form_container">
+        <form action='/'>
+            <input class="button" type='submit' value='Home'>
+        </form>
+    </div>
 <% else %>
-    <form action="/ai/guess" method="GET">
-        <input type="submit" value="Next Guess" autofocus>
-    </form>
+    <div class="form_container">
+        <form action="/ai/guess" method="GET">
+            <input class="button" type="submit" value="Next">
+        </form>
+    </div>
 <% end %>
